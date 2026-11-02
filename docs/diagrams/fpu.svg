@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="960" viewBox="0 0 1500 960">
+<defs><marker id="arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8" fill="#52647a"/></marker></defs>
+<rect width="1500" height="960" fill="#f8fafc"/>
+<text x="40" y="45" font-family="Arial" font-size="28" font-weight="bold" fill="#10233f">RV32F engine — internal datapath</text>
+<text x="40" y="76" font-family="Arial" font-size="16" fill="#52647a">Each R denotes a register boundary; routes have different latencies and share one serialized request interface</text>
+<polyline points="340,220 380,220 380,180 420,180" fill="none" stroke="#52647a" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="380,220 380,330 420,330" fill="none" stroke="#52647a" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="380,330 380,480 420,480" fill="none" stroke="#52647a" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="380,480 380,630 420,630" fill="none" stroke="#52647a" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1420,180 1460,180 1460,790 1420,790" fill="none" stroke="#52647a" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1420,330 1460,330" fill="none" stroke="#52647a" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1420,480 1460,480" fill="none" stroke="#52647a" stroke-width="2" marker-end="url(#arrow)"/>
+<polyline points="1420,630 1460,630" fill="none" stroke="#52647a" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="40" y="140" width="300" height="180" rx="9" fill="#ede9fe" stroke="#6d8199"/>
+<text x="54" y="167" font-family="Arial" font-size="18" font-weight="bold" fill="#10233f">Request + operand capture</text>
+<text x="54" y="194" font-family="Arial" font-size="15" fill="#25364b">InstrE + integer operand + load</text>
+<text x="54" y="217" font-family="Arial" font-size="15" fill="#25364b">FP register file: a, b, c</text>
+<text x="54" y="240" font-family="Arial" font-size="15" fill="#25364b">32-bit IEEE + recoded operands</text>
+<text x="54" y="263" font-family="Arial" font-size="15" fill="#25364b">R: captured operands / exec_x</text>
+<text x="54" y="286" font-family="Arial" font-size="15" fill="#25364b">busy / issue / valid control</text>
+<rect x="420" y="120" width="1000" height="120" rx="9" fill="#e0efff" stroke="#6d8199"/>
+<text x="434" y="147" font-family="Arial" font-size="18" font-weight="bold" fill="#10233f">Shared add / subtract / multiply / fused arithmetic</text>
+<text x="434" y="174" font-family="Arial" font-size="15" fill="#25364b">Pre-multiply alignment → R → 24×24 multiply → R → accumulation → R</text>
+<text x="434" y="197" font-family="Arial" font-size="15" fill="#25364b">Post-multiply normalization/sign → R → significand rounding → R → final rounding / IEEE conversion</text>
+<text x="434" y="220" font-family="Arial" font-size="15" fill="#25364b">FADD / FSUB / FMUL / FMADD / FMSUB / FNMSUB / FNMADD</text>
+<rect x="420" y="280" width="1000" height="110" rx="9" fill="#e0efff" stroke="#6d8199"/>
+<text x="434" y="307" font-family="Arial" font-size="18" font-weight="bold" fill="#10233f">Divide / square root</text>
+<text x="434" y="334" font-family="Arial" font-size="15" fill="#25364b">Iterative HardFloat raw-result engine → pipelined rounding → registered result + flags</text>
+<text x="434" y="357" font-family="Arial" font-size="15" fill="#25364b">NaN, infinity, zero and invalid special cases have a separate completion path</text>
+<rect x="420" y="430" width="1000" height="110" rx="9" fill="#e0efff" stroke="#6d8199"/>
+<text x="434" y="457" font-family="Arial" font-size="18" font-weight="bold" fill="#10233f">Integer → floating-point conversion</text>
+<text x="434" y="484" font-family="Arial" font-size="15" fill="#25364b">Signed/unsigned magnitude → R → leading-zero count + normalization → R → rounding</text>
+<text x="434" y="507" font-family="Arial" font-size="15" fill="#25364b">FCVT.S.W / FCVT.S.WU; adds two conversion cycles versus the former combinational unit</text>
+<rect x="420" y="580" width="1000" height="110" rx="9" fill="#dcfce7" stroke="#6d8199"/>
+<text x="434" y="607" font-family="Arial" font-size="18" font-weight="bold" fill="#10233f">Other operations / result selection</text>
+<text x="434" y="634" font-family="Arial" font-size="15" fill="#25364b">Float → integer conversion; compare; min/max; sign injection; classify; raw bit moves</text>
+<text x="434" y="657" font-family="Arial" font-size="15" fill="#25364b">FLW/FSW and compressed FP memory forms; FCSR access; result and exception-flag selection</text>
+<rect x="420" y="740" width="1000" height="105" rx="9" fill="#ede9fe" stroke="#6d8199"/>
+<text x="434" y="767" font-family="Arial" font-size="18" font-weight="bold" fill="#10233f">Completion destinations</text>
+<text x="434" y="794" font-family="Arial" font-size="15" fill="#25364b">FP result → internal f[rd]; integer result → EX result path → MEM/WB → x[rd]</text>
+<text x="434" y="817" font-family="Arial" font-size="15" fill="#25364b">Flags accumulate in fflags; done releases EX wait; consume acknowledges completion</text>
+<text x="40" y="885" font-family="Arial" font-size="15" fill="#334155">Fused arithmetic rounds once; controls, special-case metadata and flags are aligned with each pipeline boundary.</text>
+<text x="40" y="908" font-family="Arial" font-size="15" fill="#334155">Internal pipelining improves timing but does not allow one new FP request per cycle in this processor.</text>
+</svg>

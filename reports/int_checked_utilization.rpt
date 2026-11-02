@@ -1,0 +1,48 @@
+Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2019.2 (win64) Build 2708876 Wed Nov  6 21:40:23 MST 2019
+| Date         : Sun Nov  1 00:24:36 2026
+| Host         : <build-host> running 64-bit major release  (build 9200)
+| Command      : report_utilization -hierarchical -file <local-build>/int_checked_utilization.rpt
+| Design       : riscv_pipe_top
+| Device       : 7a35tcpg236-1
+| Design State : Synthesized
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Utilization Design Information
+
+Table of Contents
+-----------------
+1. Utilization by Hierarchy
+
+1. Utilization by Hierarchy
+---------------------------
+
++---------------------------+-----------------------------+------------+------------+---------+------+------+--------+--------+--------------+
+|          Instance         |            Module           | Total LUTs | Logic LUTs | LUTRAMs | SRLs |  FFs | RAMB36 | RAMB18 | DSP48 Blocks |
++---------------------------+-----------------------------+------------+------------+---------+------+------+--------+--------+--------------+
+| riscv_pipe_top            |                       (top) |       5211 |       4816 |     348 |   47 | 1679 |      0 |      0 |            2 |
+|   (riscv_pipe_top)        |                       (top) |        986 |        986 |       0 |    0 |  756 |      0 |      0 |            0 |
+|   u_bp                    |            branch_predictor |        449 |        349 |     100 |    0 |   64 |      0 |      0 |            0 |
+|   u_dmem                  |                        dmem |        254 |        126 |     128 |    0 |    0 |      0 |      0 |            0 |
+|   u_ext                   |                      extend |         28 |         28 |       0 |    0 |    0 |      0 |      0 |            0 |
+|   u_fp                    |                   fp_engine |       3380 |       3261 |      72 |   47 |  859 |      0 |      0 |            2 |
+|     (u_fp)                |                   fp_engine |       1047 |        975 |      72 |    0 |  268 |      0 |      0 |            0 |
+|     cvif                  |                 fp_int_pipe |        336 |        336 |       0 |    0 |   80 |      0 |      0 |            0 |
+|       (cvif)              |                 fp_int_pipe |        191 |        191 |       0 |    0 |   80 |      0 |      0 |            0 |
+|       rounder             |        roundAnyRawFNToRecFN |        145 |        145 |       0 |    0 |    0 |      0 |      0 |            0 |
+|     ds                    |                 fp_div_pipe |        568 |        568 |       0 |    0 |  195 |      0 |      0 |            0 |
+|       (ds)                |                 fp_div_pipe |        117 |        117 |       0 |    0 |   40 |      0 |      0 |            0 |
+|       divSqrtRecFNToRaw   |     divSqrtRecFNToRaw_small |        348 |        348 |       0 |    0 |  100 |      0 |      0 |            0 |
+|       roundRawOut         |             fp_round_pipe_0 |        103 |        103 |       0 |    0 |   55 |      0 |      0 |            0 |
+|         (roundRawOut)     |             fp_round_pipe_0 |         76 |         76 |       0 |    0 |   55 |      0 |      0 |            0 |
+|         lowMask_roundMask | lowMaskLoHi__parameterized1 |         27 |         27 |       0 |    0 |    0 |      0 |      0 |            0 |
+|     fm                    |               fp_arith_pipe |       1429 |       1382 |       0 |   47 |  316 |      0 |      0 |            2 |
+|       (fm)                |               fp_arith_pipe |        586 |        539 |       0 |   47 |  262 |      0 |      0 |            2 |
+|       post                |    mulAddRecFNToRaw_postMul |         81 |         81 |       0 |    0 |    0 |      0 |      0 |            0 |
+|       pre                 |     mulAddRecFNToRaw_preMul |        317 |        317 |       0 |    0 |    0 |      0 |      0 |            0 |
+|       rnd                 |               fp_round_pipe |        445 |        445 |       0 |    0 |   54 |      0 |      0 |            0 |
+|   u_rf                    |                     regfile |        114 |         66 |      48 |    0 |    0 |      0 |      0 |            0 |
++---------------------------+-----------------------------+------------+------------+---------+------+------+--------+--------+--------------+
+
+

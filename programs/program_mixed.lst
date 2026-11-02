@@ -1,0 +1,40 @@
+0000: 08000113  addi sp,x0,128
+0004: 4495  c.li x9,5
+0006: 0485  c.addi x9,1
+0008: 00748513  addi x10,x9,7
+000c: 00a12023  sw x10,0(sp)
+0010: 00012583  lw x11,0(sp)
+0014: 00158613  addi x12,x11,1 (load-use)
+0018: 0001  c.nop
+001a: 3fc000b7  lui x1,0x3fc00 (1.5 bits)
+001e: f00080d3  fmv.w.x f1,x1
+0022: 40000337  lui x6,0x40000 (2.0 bits)
+0026: f0030153  fmv.w.x f2,x6
+002a: 002081d3  fadd.s f3,f1,f2
+002e: 08110253  fsub.s f4,f2,f1
+0032: 102082d3  fmul.s f5,f1,f2
+0036: 18228353  fdiv.s f6,f5,f2
+003a: 082083c3  fmadd.s f7,f1,f2,f1
+003e: 408003b7  lui x7,0x40800 (4.0 bits)
+0042: f0038453  fmv.w.x f8,x7
+0046: 580404d3  fsqrt.s f9,f8
+004a: c00196d3  fcvt.w.s x13,f3,rtz
+004e: d0068553  fcvt.s.w f10,x13
+0052: a024a753  feq.s x14,f9,f2
+0056: 282085d3  fmin.s f11,f1,f2
+005a: 20209653  fsgnjn.s f12,f1,f2
+005e: e00617d3  fclass.s x15,f12
+0062: e0038853  fmv.x.w x16,f7
+0066: 00712227  fsw f7,4(sp)
+006a: 00412687  flw f13,4(sp)
+006e: e406  c.fswsp f1,8(sp)
+0070: 6722  c.flwsp f14,8(sp)
+0072: 001028f3  csrrs x17,fflags,x0
+0076: 00101073  csrrw x0,fflags,x0
+007a: 468d  c.li x13,3
+007c: 16fd  c.addi x13,-1
+007e: fe069fe3  bne x13,x0,loop
+0082: 00e70463  beq x14,x14,+8
+0086: 06300913  addi x18,x0,99 (must be squashed)
+008a: 02a00913  addi x18,x0,42
+008e: 0000006f  jal x0,0 (terminal marker)

@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="850" viewBox="0 0 1500 850">
+<defs><marker id="arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8" fill="#52647a"/></marker></defs>
+<rect width="1500" height="850" fill="#f8fafc"/>
+<text x="40" y="45" font-family="Arial" font-size="28" font-weight="bold" fill="#10233f">RV32IFC processor — datapath</text>
+<text x="40" y="76" font-family="Arial" font-size="16" fill="#52647a">Current riscv_pipe_top RTL • five-stage integer pipeline • serialized, internally pipelined FPU</text>
+<polyline points="280,230 330,230" fill="none" stroke="#52647a" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="283" y="215" font-family="Arial" font-size="14" fill="#334155">IF/ID</text>
+<polyline points="570,230 620,230" fill="none" stroke="#52647a" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="573" y="215" font-family="Arial" font-size="14" fill="#334155">ID/EX</text>
+<polyline points="880,230 930,230" fill="none" stroke="#52647a" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="878" y="215" font-family="Arial" font-size="14" fill="#334155">EX/MEM</text>
+<polyline points="1170,230 1220,230" fill="none" stroke="#52647a" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1165" y="215" font-family="Arial" font-size="14" fill="#334155">MEM/WB</text>
+<polyline points="1340,340 1340,390 450,390 450,340" fill="none" stroke="#52647a" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="500" y="380" font-family="Arial" font-size="14" fill="#334155">ResultW → integer register file; MEM/WB results also feed EX forwarding</text>
+<polyline points="160,440 160,340" fill="none" stroke="#52647a" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="170" y="420" font-family="Arial" font-size="14" fill="#334155">prediction</text>
+<polyline points="750,150 750,110 160,110 160,150" fill="none" stroke="#52647a" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="310" y="104" font-family="Arial" font-size="14" fill="#334155">EX correction and predictor update</text>
+<polyline points="750,340 750,440" fill="none" stroke="#52647a" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="760" y="410" font-family="Arial" font-size="14" fill="#334155">InstrE, RD1E / FPResult</text>
+<polyline points="900,540 940,540 940,360 1050,360 1050,340" fill="none" stroke="#52647a" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="950" y="430" font-family="Arial" font-size="14" fill="#334155">FP memory interface</text>
+<rect x="40" y="150" width="240" height="190" rx="9" fill="#e0efff" stroke="#6d8199"/>
+<text x="54" y="177" font-family="Arial" font-size="18" font-weight="bold" fill="#10233f">IF: instruction fetch</text>
+<text x="54" y="204" font-family="Arial" font-size="15" fill="#25364b">PC + next-PC selection</text>
+<text x="54" y="227" font-family="Arial" font-size="15" fill="#25364b">Instruction ROM / imem</text>
+<text x="54" y="250" font-family="Arial" font-size="15" fill="#25364b">Halfword alignment</text>
+<text x="54" y="273" font-family="Arial" font-size="15" fill="#25364b">rvc_decode: 16 → 32 bits</text>
+<text x="54" y="296" font-family="Arial" font-size="15" fill="#25364b">Sequential PC = PC + 2/4</text>
+<rect x="330" y="150" width="240" height="190" rx="9" fill="#e0efff" stroke="#6d8199"/>
+<text x="344" y="177" font-family="Arial" font-size="18" font-weight="bold" fill="#10233f">ID: decode / operands</text>
+<text x="344" y="204" font-family="Arial" font-size="15" fill="#25364b">Integer control decoder</text>
+<text x="344" y="227" font-family="Arial" font-size="15" fill="#25364b">32 × 32 integer register file</text>
+<text x="344" y="250" font-family="Arial" font-size="15" fill="#25364b">Immediate generation</text>
+<text x="344" y="273" font-family="Arial" font-size="15" fill="#25364b">Source/destination indexes</text>
+<text x="344" y="296" font-family="Arial" font-size="15" fill="#25364b">FP / CSR request detection</text>
+<rect x="620" y="150" width="260" height="190" rx="9" fill="#e0efff" stroke="#6d8199"/>
+<text x="634" y="177" font-family="Arial" font-size="18" font-weight="bold" fill="#10233f">EX: execution</text>
+<text x="634" y="204" font-family="Arial" font-size="15" fill="#25364b">MEM/WB forwarding muxes</text>
+<text x="634" y="227" font-family="Arial" font-size="15" fill="#25364b">ALU operand selection + ALU</text>
+<text x="634" y="250" font-family="Arial" font-size="15" fill="#25364b">Branch compare / target adder</text>
+<text x="634" y="273" font-family="Arial" font-size="15" fill="#25364b">Result: ALU, link PC or FP</text>
+<text x="634" y="296" font-family="Arial" font-size="15" fill="#25364b">Fault detection</text>
+<rect x="930" y="150" width="240" height="190" rx="9" fill="#e0efff" stroke="#6d8199"/>
+<text x="944" y="177" font-family="Arial" font-size="18" font-weight="bold" fill="#10233f">MEM: data access</text>
+<text x="944" y="204" font-family="Arial" font-size="15" fill="#25364b">Shared data memory</text>
+<text x="944" y="227" font-family="Arial" font-size="15" fill="#25364b">Integer byte/halfword/word</text>
+<text x="944" y="250" font-family="Arial" font-size="15" fill="#25364b">Load extension / store enables</text>
+<text x="944" y="273" font-family="Arial" font-size="15" fill="#25364b">FP address/data selection</text>
+<text x="944" y="296" font-family="Arial" font-size="15" fill="#25364b">Fault → trap commitment</text>
+<rect x="1220" y="150" width="240" height="190" rx="9" fill="#e0efff" stroke="#6d8199"/>
+<text x="1234" y="177" font-family="Arial" font-size="18" font-weight="bold" fill="#10233f">WB: integer writeback</text>
+<text x="1234" y="204" font-family="Arial" font-size="15" fill="#25364b">Load / execution result mux</text>
+<text x="1234" y="227" font-family="Arial" font-size="15" fill="#25364b">Write x[rd] when enabled</text>
+<text x="1234" y="250" font-family="Arial" font-size="15" fill="#25364b">x0 remains zero</text>
+<text x="1234" y="273" font-family="Arial" font-size="15" fill="#25364b">ValidW + PCW retirement</text>
+<text x="1234" y="296" font-family="Arial" font-size="15" fill="#25364b">FP-to-int results use this path</text>
+<rect x="40" y="440" width="240" height="140" rx="9" fill="#dcfce7" stroke="#6d8199"/>
+<text x="54" y="467" font-family="Arial" font-size="18" font-weight="bold" fill="#10233f">Branch predictor</text>
+<text x="54" y="494" font-family="Arial" font-size="15" fill="#25364b">64 direct-mapped entries</text>
+<text x="54" y="517" font-family="Arial" font-size="15" fill="#25364b">2-bit counters + tags + targets</text>
+<text x="54" y="540" font-family="Arial" font-size="15" fill="#25364b">Asynchronous LUT-RAM read</text>
+<rect x="410" y="440" width="490" height="190" rx="9" fill="#ede9fe" stroke="#6d8199"/>
+<text x="424" y="467" font-family="Arial" font-size="18" font-weight="bold" fill="#10233f">FP engine: side unit attached to EX</text>
+<text x="424" y="494" font-family="Arial" font-size="15" fill="#25364b">32 × 32 FP registers; f0 is writable</text>
+<text x="424" y="517" font-family="Arial" font-size="15" fill="#25364b">Operand capture + shared arithmetic pipeline</text>
+<text x="424" y="540" font-family="Arial" font-size="15" fill="#25364b">Iterative divide/sqrt + pipelined rounding</text>
+<text x="424" y="563" font-family="Arial" font-size="15" fill="#25364b">Conversions, compare, sign, min/max, class</text>
+<text x="424" y="586" font-family="Arial" font-size="15" fill="#25364b">FCSR / rounding mode / accumulated flags</text>
+<rect x="980" y="480" width="400" height="120" rx="9" fill="#fff0d4" stroke="#6d8199"/>
+<text x="994" y="507" font-family="Arial" font-size="18" font-weight="bold" fill="#10233f">Pipeline-register contents</text>
+<text x="994" y="534" font-family="Arial" font-size="15" fill="#25364b">IF/ID → ID/EX → EX/MEM → MEM/WB</text>
+<text x="994" y="557" font-family="Arial" font-size="15" fill="#25364b">Data, control, valid, PC and fault metadata</text>
+<text x="994" y="580" font-family="Arial" font-size="15" fill="#25364b">Prediction metadata travels to EX</text>
+<text x="40" y="775" font-family="Arial" font-size="15" fill="#334155">FP memory operations use the same data memory, selected by ExtE; FP register writes occur inside fp_engine.</text>
+<text x="40" y="798" font-family="Arial" font-size="15" fill="#334155">FP requests drain older work and stall younger work; this is not a fully overlapped FP issue pipeline.</text>
+<text x="40" y="821" font-family="Arial" font-size="15" fill="#334155">Instruction and data memories are separate; no cache, AXI bus or board-level peripheral wrapper is shown.</text>
+</svg>

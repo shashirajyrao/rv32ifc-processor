@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="850" viewBox="0 0 1500 850">
+<defs><marker id="arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8" fill="#52647a"/></marker></defs>
+<rect width="1500" height="850" fill="#f8fafc"/>
+<text x="40" y="45" font-family="Arial" font-size="28" font-weight="bold" fill="#10233f">RV32IFC processor — control path</text>
+<text x="40" y="76" font-family="Arial" font-size="16" fill="#52647a">Control decisions and their destinations; arrows represent control dependencies, not data buses</text>
+<polyline points="340,210 400,210" fill="none" stroke="#52647a" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="345" y="195" font-family="Arial" font-size="14" fill="#334155">decode uses</text>
+<polyline points="190,310 190,440" fill="none" stroke="#52647a" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="200" y="385" font-family="Arial" font-size="14" fill="#334155">ExtD / ExtE</text>
+<polyline points="550,310 550,440" fill="none" stroke="#52647a" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="560" y="385" font-family="Arial" font-size="14" fill="#334155">stall / flush / redirect</text>
+<polyline points="910,310 910,360 700,360 700,440" fill="none" stroke="#52647a" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="770" y="350" font-family="Arial" font-size="14" fill="#334155">forward select → EX muxes</text>
+<polyline points="1290,310 1290,380 870,380 870,440" fill="none" stroke="#52647a" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="1000" y="370" font-family="Arial" font-size="14" fill="#334155">trap override / side-effect suppression</text>
+<polyline points="410,535 490,535" fill="none" stroke="#52647a" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="423" y="521" font-family="Arial" font-size="14" fill="#334155">wait</text>
+<polyline points="990,560 910,560" fill="none" stroke="#52647a" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="920" y="547" font-family="Arial" font-size="14" fill="#334155">done</text>
+<polyline points="410,610 450,610 450,680 1230,680 1230,630" fill="none" stroke="#52647a" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="550" y="672" font-family="Arial" font-size="14" fill="#334155">active / consume; instruction and integer operand remain stable</text>
+<rect x="40" y="140" width="300" height="170" rx="9" fill="#e0efff" stroke="#6d8199"/>
+<text x="54" y="167" font-family="Arial" font-size="18" font-weight="bold" fill="#10233f">Instruction decoder</text>
+<text x="54" y="194" font-family="Arial" font-size="15" fill="#25364b">Opcode / funct fields / C legality</text>
+<text x="54" y="217" font-family="Arial" font-size="15" fill="#25364b">ALUControl, ALUSrc, ImmSrc</text>
+<text x="54" y="240" font-family="Arial" font-size="15" fill="#25364b">RegWrite, MemWrite, ResultSrc</text>
+<text x="54" y="263" font-family="Arial" font-size="15" fill="#25364b">Branch, Jump, JumpReg, Ext</text>
+<text x="54" y="286" font-family="Arial" font-size="15" fill="#25364b">UsesRs1 / UsesRs2</text>
+<rect x="400" y="140" width="300" height="170" rx="9" fill="#fff0d4" stroke="#6d8199"/>
+<text x="414" y="167" font-family="Arial" font-size="18" font-weight="bold" fill="#10233f">Hazard / redirect control</text>
+<text x="414" y="194" font-family="Arial" font-size="15" fill="#25364b">Load-use dependency detection</text>
+<text x="414" y="217" font-family="Arial" font-size="15" fill="#25364b">Compare saved prediction</text>
+<text x="414" y="240" font-family="Arial" font-size="15" fill="#25364b">with resolved EX direction/target</text>
+<text x="414" y="263" font-family="Arial" font-size="15" fill="#25364b">StallF, StallD, FlushD, FlushE</text>
+<text x="414" y="286" font-family="Arial" font-size="15" fill="#25364b">CorrectedPCE → next-PC mux</text>
+<rect x="760" y="140" width="300" height="170" rx="9" fill="#dcfce7" stroke="#6d8199"/>
+<text x="774" y="167" font-family="Arial" font-size="18" font-weight="bold" fill="#10233f">Forwarding control</text>
+<text x="774" y="194" font-family="Arial" font-size="15" fill="#25364b">Rs1E/Rs2E vs RdM/RdW</text>
+<text x="774" y="217" font-family="Arial" font-size="15" fill="#25364b">RegWriteM / RegWriteW</text>
+<text x="774" y="240" font-family="Arial" font-size="15" fill="#25364b">ForwardAE / ForwardBE</text>
+<text x="774" y="263" font-family="Arial" font-size="15" fill="#25364b">Select MEM or WB results</text>
+<text x="774" y="286" font-family="Arial" font-size="15" fill="#25364b">Load-use handled separately</text>
+<rect x="1120" y="140" width="340" height="170" rx="9" fill="#fff0d4" stroke="#6d8199"/>
+<text x="1134" y="167" font-family="Arial" font-size="18" font-weight="bold" fill="#10233f">Exception / trap control</text>
+<text x="1134" y="194" font-family="Arial" font-size="15" fill="#25364b">Fetch, decode and EX faults</text>
+<text x="1134" y="217" font-family="Arial" font-size="15" fill="#25364b">Data alignment / access faults</text>
+<text x="1134" y="240" font-family="Arial" font-size="15" fill="#25364b">Fault metadata through EX/MEM</text>
+<text x="1134" y="263" font-family="Arial" font-size="15" fill="#25364b">TrapEventM commits trap record</text>
+<text x="1134" y="286" font-family="Arial" font-size="15" fill="#25364b">Trap, TrapPC, Cause, Value</text>
+<rect x="40" y="440" width="370" height="190" rx="9" fill="#ede9fe" stroke="#6d8199"/>
+<text x="54" y="467" font-family="Arial" font-size="18" font-weight="bold" fill="#10233f">FP serialization controller</text>
+<text x="54" y="494" font-family="Arial" font-size="15" fill="#25364b">ExtDrain: FP in ID + older work</text>
+<text x="54" y="517" font-family="Arial" font-size="15" fill="#25364b">ExtWait: FP in EX and not done</text>
+<text x="54" y="540" font-family="Arial" font-size="15" fill="#25364b">Hold fetch/decode during wait</text>
+<text x="54" y="563" font-family="Arial" font-size="15" fill="#25364b">Hold EX; insert MEM bubbles</text>
+<text x="54" y="586" font-family="Arial" font-size="15" fill="#25364b">active / done / consume handshake</text>
+<text x="54" y="609" font-family="Arial" font-size="15" fill="#25364b">Guard memory and register writes</text>
+<rect x="490" y="440" width="420" height="190" rx="9" fill="#e0efff" stroke="#6d8199"/>
+<text x="504" y="467" font-family="Arial" font-size="18" font-weight="bold" fill="#10233f">Pipeline enables and bubbles</text>
+<text x="504" y="494" font-family="Arial" font-size="15" fill="#25364b">IF: PC hold / redirect / trap freeze</text>
+<text x="504" y="517" font-family="Arial" font-size="15" fill="#25364b">IF/ID: stall or flush younger decode</text>
+<text x="504" y="540" font-family="Arial" font-size="15" fill="#25364b">ID/EX: hold FP or inject bubble</text>
+<text x="504" y="563" font-family="Arial" font-size="15" fill="#25364b">EX/MEM: suppress incomplete FP</text>
+<text x="504" y="586" font-family="Arial" font-size="15" fill="#25364b">MEM/WB: gate faulting work</text>
+<text x="504" y="609" font-family="Arial" font-size="15" fill="#25364b">Older WB may finish at trap edge</text>
+<rect x="990" y="440" width="470" height="190" rx="9" fill="#ede9fe" stroke="#6d8199"/>
+<text x="1004" y="467" font-family="Arial" font-size="18" font-weight="bold" fill="#10233f">FP operation controller</text>
+<text x="1004" y="494" font-family="Arial" font-size="15" fill="#25364b">Capture operands → issue selected unit</text>
+<text x="1004" y="517" font-family="Arial" font-size="15" fill="#25364b">Arithmetic/conversion/divide valid tracking</text>
+<text x="1004" y="540" font-family="Arial" font-size="15" fill="#25364b">Select result; update FP rf or integer result</text>
+<text x="1004" y="563" font-family="Arial" font-size="15" fill="#25364b">Accumulate IEEE flags in fflags</text>
+<text x="1004" y="586" font-family="Arial" font-size="15" fill="#25364b">frm / fcsr access; illegal rounding checks</text>
+<text x="1004" y="609" font-family="Arial" font-size="15" fill="#25364b">Reset cancels in-flight completion</text>
+<text x="40" y="775" font-family="Arial" font-size="15" fill="#334155">Branch predictor is updated only for eligible resolved branches/jumps; prediction metadata is carried to EX.</text>
+<text x="40" y="798" font-family="Arial" font-size="15" fill="#334155">Trap handling halts the core and records the fault; this RTL does not implement a privileged trap-handler flow.</text>
+<text x="40" y="821" font-family="Arial" font-size="15" fill="#334155">FP drain and wait conditions can overlap; their counters must not be added as independent cycle penalties.</text>
+</svg>
